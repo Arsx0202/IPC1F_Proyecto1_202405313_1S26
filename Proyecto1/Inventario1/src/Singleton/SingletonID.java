@@ -1,0 +1,29 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Singleton;
+
+/**
+ *
+ * @author celad
+ */
+public class SingletonID {
+    
+    
+   private static final SingletonID Instancia = new SingletonID();
+   private int IdRopa = 0;
+   
+   private SingletonID(){
+    }
+   
+   public static SingletonID getInstancia(){
+       return Instancia;
+               
+    }
+   public int GenerarID(){
+       return IdRopa++;
+   }
+   
+    
+}
