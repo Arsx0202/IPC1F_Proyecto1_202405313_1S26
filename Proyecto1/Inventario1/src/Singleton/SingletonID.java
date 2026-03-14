@@ -12,7 +12,7 @@ public class SingletonID {
     
     
    private static final SingletonID Instancia = new SingletonID();
-   private int IdRopa = 0;
+   private int IdRopa = 1;
    
    private SingletonID(){
     }

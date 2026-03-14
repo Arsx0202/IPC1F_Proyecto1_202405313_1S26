@@ -4,6 +4,8 @@
  */
 package inventario1.views;
 
+import inventario1.controllers.InventarioController;
+
 /**
  *
  * @author celad
@@ -123,7 +125,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
-        // TODO add your handling code here:
+
+        String reporte = InventarioController.Reporte();
+        //Guardamos el reporte
+        try{
+            java.io.File cont = new java.io.File("Reporte.html");
+            java.io.FileWriter contR  = new java.io.FileWriter(cont);
+            
+            contR.write(reporte);
+            contR.close();
+            //Abrimos el archivo html
+            java.awt.Desktop.getDesktop().browse(cont.toURI());
+        }
+        catch(java.io.IOException e){
+            
+        }
         
     }//GEN-LAST:event_btnReporteActionPerformed
 

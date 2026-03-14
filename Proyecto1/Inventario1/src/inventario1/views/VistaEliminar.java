@@ -128,15 +128,17 @@ public class VistaEliminar extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+       
       try{
         int idBorrar = Integer.parseInt(txtID.getText());
         
         InventarioModel BorrarResultado = InventarioController.BorrarRopa(idBorrar);
-        
+        //Mientras exita algo lo cual borrar, se enviaran los tados que seran borrados
         if (BorrarResultado != null){
             txtResultado.setText("Nombre: "+ BorrarResultado.getNombre()+ "\nNo.Producto: "+ idBorrar + "\nCategoria: "+ BorrarResultado.getCategoria());
             
         }
+        // se borra el texto antes ingresado
         txtID.setText("");
       }
       catch(NumberFormatException e){

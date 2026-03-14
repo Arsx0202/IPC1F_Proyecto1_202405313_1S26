@@ -42,7 +42,6 @@ public class VistaRegistrar extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
         btnAplicar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
-        txtHora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,27 +73,8 @@ public class VistaRegistrar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtCodigo)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(txtTotal)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(txtFecha))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel1)
                         .addGap(0, 133, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -102,6 +82,18 @@ public class VistaRegistrar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCerrar)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(txtCodigo)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtTotal)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFecha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,9 +111,7 @@ public class VistaRegistrar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,15 +137,17 @@ public class VistaRegistrar extends javax.swing.JFrame {
         // TODO add your handling code here:
         int id = Integer.parseInt(txtCodigo.getText());
         int cantidad = Integer.parseInt(txtCantidad.getText());
+   
         
         InventarioModel VentaResultado = InventarioController.VenderRopa(id, cantidad);
-        
+        //Si existe dicho producto comenzara lo siguiente
         if(VentaResultado != null){
-            double Precio = VentaResultado.getPrecio(); 
-            double Total = Precio * cantidad;
-            
+            double Precio = VentaResultado.getPrecio(); //Se obtiene el precio 
+            double Total = Precio * cantidad; //se calculcula el total multiplicando el precio por la cantidad
+            String Fecha = VentaResultado.getFecha(); //se obtiene la fecha
+        //Se envian tanto la fecha como el total, pero antes el total pasa a ser solo texto
         txtTotal.setText(String.valueOf(Total));
-        
+        txtFecha.setText(Fecha); //fecha ya esta como texto
             
         }
     }//GEN-LAST:event_btnAplicarActionPerformed
@@ -196,7 +188,6 @@ public class VistaRegistrar extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

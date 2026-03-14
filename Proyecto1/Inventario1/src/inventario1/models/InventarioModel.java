@@ -11,12 +11,21 @@ import java.util.Date;
  * @author celad
  */
 public class InventarioModel {
-    
+    //todos nuestros datos que seran "guardados" 
     private int id;
     private String nombre;
     private int cantidad;
     private String categoria;
     private double precio;
+    private String fecha;
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     public double getPrecio() {
         return precio;

@@ -184,15 +184,21 @@ public class VistaAgregar extends javax.swing.JFrame {
         int CantidadNueva = Integer.parseInt(txtCantidad.getText());
         int PrecioNuevo = Integer.parseInt(txtPrecio.getText());
         String CategoriaNuevo = String.valueOf(boxCategoria.getSelectedItem());
-        
-        
+        //Verificación para saber si el usuario ingreso solo numeros positivos
+        if(idNuevo>0 && CantidadNueva>0 && PrecioNuevo>0){
         InventControl.AgregarRopa(idNuevo, NombreNuevo, CantidadNueva, CategoriaNuevo, PrecioNuevo);
         txtNombre.setText("");
         txtCantidad.setText("");
         txtPrecio.setText("");
         AreaDatos.setText("Nombre: "+NombreNuevo +"\nNo. Producto: "+ idNuevo + "\nCategoria: "+ CategoriaNuevo + "\nCantidad: " + CantidadNueva +"\nPrecio: "+ PrecioNuevo);//idNuevo, CantidadNueva, PrecioNuevo);
+         }
+        else{
+            //Si el usuario ingreso números negativos, entonces saltará este mensaje
+            AreaDatos.setText("Por favor ingrese solo numeros Positivos");
+         }  
         }
         catch(NumberFormatException e){
+            //Si el usuario ingreso un datos erroneo como poner letras en lugar de numeros saltará este mensaje
             AreaDatos.setText("Erorr, ingrese datos validos");
             
         }
